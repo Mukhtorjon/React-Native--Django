@@ -1,5 +1,5 @@
 import { Text, View,FlatList, RefreshControl } from "react-native";
-import { DUMMY_DATA} from "../../data/dummy";
+// import { DUMMY_DATA} from "../../data/dummy";
 import  EventItem  from "./event_items";
 const EventList = ()=>{
         const renderItem = ({item})=>{

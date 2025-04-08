@@ -22,9 +22,8 @@ const ProfileDetailScreen = () =>{
     
     return(
         <View style={styles.screen}>
-            <Text style={{fontSize:20}}>Tis is the Event detail Screen  {eventId}</Text>
-            <Text style={{fontSize:20}}>{first_name}  {last_name}</Text>
-            <Text style={{fontSize:20}}>{email}</Text>
+            <Text> THis is the Event detail Screen  {profileId}</Text>
+       
             
         </View>
     )
