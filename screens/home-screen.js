@@ -1,24 +1,31 @@
 import { View, Text, StyleSheet, Button } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import EventList from "@/components/events/event_list";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const HomeScreen = () => {
   const [data, setData] = useState([]);
-  useEffect(() => {
-    fetchData;
+  const fetchData = useCallback(async () => {
+    try {
+      const response = await fetch("http://192.168.19.14:8000/api/events/");
+      if (!response.ok) {
+        throw new console.error("HTTP error! status: ${response.ststus}");
+      }
+      const data = await response.json();
+      setData(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   }, []);
-  const fetchData = async () => {
-    const response = await fetch("http://127.0.0.1:8000/api/events/");
-    const data = await response.json();
-    setData(data);
-  };
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
   return (
     <View style={styles.screen}>
       <EventList data={data} />
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   screen: {

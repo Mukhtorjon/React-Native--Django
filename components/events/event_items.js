@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, TouchableOpacity, Text, Image } from "react-native";
 
-const EventItem = ({ id, first_name, last_name, email }) => {
+const EventItem = ({ id, name, description, qr_code }) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
@@ -9,15 +9,18 @@ const EventItem = ({ id, first_name, last_name, email }) => {
       onPress={() =>
         navigation.navigate("Event", {
           eventId: id,
-          first_name,
-          last_name,
-          email,
+          name,
+          description,
+          qr_code,
         })
-      }
+       }
     >
-      <Text>{first_name}</Text>
-      <Text>{last_name}</Text>
-      <Text>{email}</Text>
+      <Text>{name}</Text>
+      <Text>{description}</Text>
+      <Image
+        style={{ width: 100, height: 100 }}
+        source={{ uri: qr_code }}
+      ></Image>
     </TouchableOpacity>
   );
 };
